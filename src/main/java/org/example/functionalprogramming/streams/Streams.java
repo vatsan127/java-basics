@@ -5,85 +5,43 @@ import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import org.example.functionalprogramming.model.Student;
 
-
-class Students {
-    String name;
-    String grade;
-    int age;
-
-    public String getName() {
-        return name;
-    }
-
-    public String getGrade() {
-        return grade;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setGrade(String grade) {
-        this.grade = grade;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public Students(String name, String grade, int age) {
-        this.name = name;
-        this.grade = grade;
-        this.age = age;
-
-    }
-
-    @Override
-    public String toString() {
-        return "Students{" + "name='" + name + '\'' + ", grade='" + grade + '\'' + ", age=" + age + '}';
-    }
-}
+import static org.example.functionalprogramming.model.InitStudents.STUDENT_LIST;
+import static org.example.functionalprogramming.model.InitStudents.NAMES_LIST;
 
 
 public class Streams {
-    private final static List<Students> studentsList = List.of(new Students("NARUTO", "G", 16), new Students("SASUKE", "G", 16), new Students("SAKURA", "F", 16), new Students("MINATO", "H", 30), new Students("MADARA", "U", 50), new Students("OBITO", "U", 22));
-
 
     public static void streamFilter() {
-        Predicate<Students> filterByGrade = student -> student.getGrade().equals("H");
-        Stream<Students> stream = studentsList.stream().filter(filterByGrade);
+        Predicate<Student> filterByGrade = student -> student.getGrade().equals("H");
+        Stream<Student> stream = STUDENT_LIST.stream().filter(filterByGrade);
         stream.forEach(s -> System.out.println(s.toString()));
     }
 
     private static void streamCount() {
         /*int count = studentsList.size();*/
-        Long count = studentsList.stream().count();
+        Long count = STUDENT_LIST.stream().count();
         System.out.println("Count : " + count);
     }
 
     private static void streamsInArrays() {
-        String names[] = {"NARUTO", "SASUKE", "SAKURA", "MADARA", "KAKASHI", "OBITO"};
-        List<String> nameStream = Arrays.stream(names).collect(Collectors.toList());
+        List<String> nameStream = Arrays.stream(NAMES_LIST).collect(Collectors.toList());
         System.out.println("streamsInArrays : " + nameStream);
 
     }
 
     private static void streamMap() {
-        Predicate<Students> filterByName = students -> students.getName().equalsIgnoreCase("naruto");
-        List<Students> newStudentsList = studentsList.stream()
-                .map(students ->
+        Predicate<Student> filterByName = student -> student.getName().equalsIgnoreCase("naruto");
+        List<Student> newStudentList = STUDENT_LIST.stream()
+                .map(student ->
                         {
-                            return new Students(students.getName(), students.getGrade(), students.getAge() + 10);
+                            return new Student(student.getName(), student.getGrade(), student.getAge() + 10);
                         }
                 )
                 .collect(Collectors.toList());
         System.out.println("StreamMap");
-        newStudentsList.stream()
+        newStudentList.stream()
                 .filter(filterByName)
                 .forEach(s ->
                         {
