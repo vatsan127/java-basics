@@ -52,7 +52,6 @@ public class MyLinkedList implements List {
             n = n.next;
             location++;
         }
-//        n = n.next;
         return n.data;
     }
 
@@ -105,6 +104,7 @@ public class MyLinkedList implements List {
         return size + 1;
     }
 
+    @Override
     public void print() {
         if (head == null) return;
         Node n = head;
@@ -122,5 +122,30 @@ public class MyLinkedList implements List {
     @Override
     public boolean isEmpty() {
         return (head == null);
+    }
+
+    @Override
+    public void insertAt(int index, int data) {
+        if (index >= size()) {
+            throw new ArrayIndexOutOfBoundsException();
+
+        } else if (head == null && index == 0) {
+            Node node = new Node(data);
+            head = node;
+        } else if (index == 0) {
+            Node node = new Node(data);
+            node.next = head;
+            head = node;
+        } else {
+            Node n = head;
+            int location = 0;
+            while (n.next != null && location < index - 1) {
+                n = n.next;
+                location++;
+            }
+            Node node = new Node(data);
+            node.next = n.next;
+            n.next = node;
+        }
     }
 }

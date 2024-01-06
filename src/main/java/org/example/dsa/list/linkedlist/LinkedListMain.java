@@ -17,5 +17,8 @@ public class LinkedListMain {
         linkedList.print();
 
         System.out.println(linkedList.get(3));
+
+        linkedList.insertAt(0,9);
+        linkedList.print();
     }
 }
