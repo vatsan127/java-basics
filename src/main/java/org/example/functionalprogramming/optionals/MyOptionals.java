@@ -1,4 +1,4 @@
-package org.example.functionalprogramming;
+package org.example.functionalprogramming.optionals;
 
 import org.example.functionalprogramming.model.InitStudents;
 import org.example.functionalprogramming.model.Student;

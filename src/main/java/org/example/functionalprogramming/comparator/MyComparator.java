@@ -1,4 +1,4 @@
-package org.example.functionalprogramming;
+package org.example.functionalprogramming.comparator;
 
 import org.example.functionalprogramming.model.InitStudents;
 import org.example.functionalprogramming.model.Student;
@@ -28,7 +28,7 @@ public class MyComparator {
             @Override
             public int compare(Student o1, Student o2) {
                 return o1.getAge() > o2.getAge() ? 1 : -1;
-//                return Integer.compare(o1.getAge(),o2.getAge());
+                //return Integer.compare(o1.getAge(),o2.getAge());
             }
 
         };
@@ -42,7 +42,11 @@ public class MyComparator {
         System.out.println(sortByCollections());
 
         System.out.println("SORT BY COMPARATOR");
-        sortByComparator().forEach(student -> System.out.println(student.getName()));
+        sortByComparator().forEach((student) -> {
+                    System.out.print("Name : " + student.getName());
+                    System.out.println(" Age : " + student.getAge());
+                }
+        );
     }
 
 }
