@@ -1,4 +1,4 @@
-package org.example.oops.MYinterface;
+package org.example.oops.myinterface;
 
 public abstract class AbstractClass implements MyInterface {
     @Override

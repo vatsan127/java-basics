@@ -1,4 +1,4 @@
-package org.example.oops.MYinterface;
+package org.example.oops.myinterface;
 
 public class Extender extends AbstractClass{
     @Override

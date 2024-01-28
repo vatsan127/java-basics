@@ -1,12 +1,8 @@
 package org.example.functionalprogramming.comparator;
 
-import org.example.functionalprogramming.model.InitStudents;
 import org.example.functionalprogramming.model.Student;
 
-import javax.print.DocFlavor;
-import java.rmi.StubNotFoundException;
 import java.util.*;
-import java.util.function.Predicate;
 
 import static org.example.functionalprogramming.model.InitStudents.NAMES_LIST;
 import static org.example.functionalprogramming.model.InitStudents.STUDENT_LIST;
