@@ -7,12 +7,20 @@ public interface MyInterface {
 
     void print();
 
-    /*default*/
+    /*
+     * default Methods
+     * can be overriden in the implementation class
+     * used to evolve the Interfaces
+     * */
     default void defaultPrint() {
         System.out.println("Print from default Method");
     }
 
-    /*static*/
+    /*
+     * static Methods
+     * Similar to default Methods
+     * this cannot be overridden by the implementation classes
+     * */
     static void staticPint() {
         System.out.println("Print from static method");
     }

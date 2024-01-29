@@ -8,16 +8,22 @@ import java.util.List;
 import java.util.function.Consumer;
 
 public class MyConsumer {
-    /*Operations
-     * accept()
-     * andThen()
+    /*
+     * Consumer
+     * takes an argument
+     * but returns no data
+     * (opposite of Supplier)
      */
+
 
     private static String[] studentNameArr = InitStudents.NAMES_LIST;
     private static List<String> studentNameList = Arrays.asList(studentNameArr);
     private static List<Student> studentList = InitStudents.STUDENT_LIST;
 
-
+    /*Operations
+     * accept()
+     * andThen()
+     */
     public static void consumerFunc() {
         /*Consumer 1*/
         System.out.println("studentConsumerPrintName");

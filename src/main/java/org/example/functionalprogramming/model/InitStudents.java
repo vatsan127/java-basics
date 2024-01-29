@@ -11,7 +11,7 @@ public class InitStudents {
     static {
         STUDENT_LIST = List.of(
                 new Student("SASUKE", "G", 15),
-                new Student("SAKURA", "F", 11),
+                new Student("SAKURA", "F", 15),
                 new Student("MINATO", "H", 30),
                 new Student("HASHIRAMA", "H", 60),
                 new Student("MADARA", "U", 51),
