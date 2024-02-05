@@ -100,6 +100,21 @@ public class TerminalOperations {
                     System.out.println("Students : " + nameList);
                 }
         );
+
+        System.out.println("Grouping students by age");
+        Predicate<Integer> groupingByAge = age -> age < 30;
+        Map<String, List<Student>> map1 = studentList.stream()
+                .collect(
+                        Collectors.groupingBy(
+                                s -> groupingByAge.test(s.getAge()) ? "below30" : "above30"
+                        ));
+        map1.forEach(
+                (k, v) -> {
+                    System.out.println("Group : " + k);
+                    List<String> nameList = v.stream().map(Student::getName).toList();
+                    System.out.println("Students : " + nameList);
+                }
+        );
     }
 
 
