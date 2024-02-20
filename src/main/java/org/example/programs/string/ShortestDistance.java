@@ -1,9 +1,10 @@
-package org.example.temp;
+package org.example.programs.string;
+
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Run {
+public class ShortestDistance {
     /*Shortest distance to every other character from given character
      * 0 1 2 3 4 5 6
      * A B C D E F C
