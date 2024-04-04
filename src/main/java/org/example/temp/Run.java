@@ -1,44 +1,115 @@
 package org.example.temp;
 
-import java.util.ArrayList;
-import java.util.List;
 
-public class Run {
-    /*Shortest distance to every other character from given character
-     * 0 1 2 3 4 5 6
-     * A B C D E F C
-     *
-     * I I 0 1 2 3 4
-     * 2 1 0 1 2 1 0
-     * */
+import java.util.Scanner;
 
-    public static void solution(char[] charArr, int x) {
-        int length = charArr.length;
-        int prev = Integer.MAX_VALUE;
-        List<Integer> arrList = new ArrayList<>();
-        for (int i = 0; i < length; i++) {
-            if (charArr[i] == x) {
-                prev = i;
-            }
-            if (prev == Integer.MAX_VALUE) {
-                arrList.add(prev);
-            } else {
-                arrList.add(Math.abs(prev - i));
-            }
-        }
-        for (int i = length - 1; i >= 0; i--) {
-            if (charArr[i] == x) {
-                prev = i;
-            }
-            if (prev != Integer.MAX_VALUE) {
-                arrList.set(i, Math.min(arrList.get(i), Math.abs(prev - i)));
-            }
-        }
-        System.out.println(arrList);
+class Node {
+    public Node(int data) {
+        this.data = data;
     }
 
+    int data;
+    Node next;
+
+}
+
+class List {
+    Node head;
+    Node node;
+    Node point;
+
+    int size = 0;
+    int cursor = 0;
+
+    public void add(int data) {
+
+        if (head == null) {
+            node = new Node(data);
+            head = node;
+        } else {
+            point = head;
+            while (point.next != null) {
+                point = point.next;
+            }
+            point.next = new Node(data);
+
+        }
+        size++;
+    }
+
+    public void insertAtHead(int data) {
+        point = new Node(data);
+        point.next = head;
+        head = point;
+        size++;
+    }
+
+    public void insertAt(int index, int data) {
+        if (index == 0) {
+            insertAtHead(data);
+        } else {
+
+            point = head;
+            int count = 0;
+            while (point.next != null && count < index - 1) {
+                point = point.next;
+                count++;
+            }
+            Node newNode = point.next;
+            point.next = new Node(data);
+            point = point.next;
+            point.next = newNode;
+        }
+
+
+    }
+
+    public void operations(boolean pointing, int data) {
+        if (pointing) {
+            cursor++;
+        } else {
+            if (cursor > 0) {
+                cursor--;
+            } else {
+                cursor = 0;
+            }
+        }
+        insertAt(cursor, data);
+
+    }
+
+    public void show() {
+        Node node1 = head;
+        System.out.print("size : " + size+ " data: ");
+        while (node1.next != null) {
+            System.out.print(node1.data + "");
+            node1 = node1.next;
+        }
+        System.out.println(node1.data);
+    }
+
+}
+
+public class Run {
     public static void main(String[] args) {
-        char[] charArr = {'A', 'B', 'C', 'D', 'E', 'F', 'C'};
-        solution(charArr, 'C');
+        List list = new List();
+        list.add(1);
+        list.add(2);
+        list.add(3);
+        list.add(4);
+        list.add(5);
+        list.show();
+
+        Scanner scanner = new Scanner(System.in);
+        while (true) {
+            System.out.print("pointer : ");
+            int value = scanner.nextInt();
+            System.out.print("data : ");
+            int data = scanner.nextInt();
+            System.out.println();
+            list.operations(value > 0, data);
+            list.show();
+        }
+
     }
 }
