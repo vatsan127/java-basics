@@ -71,7 +71,7 @@ public class TerminalOperations {
                 .map(Student::getName)
                 .collect(Collectors.minBy(stringComparator));
         String firstName = firstNameOpt.isPresent() ? firstNameOpt.get() : "NoName";
-        System.out.println("MaxBy : " + firstName + "\n");
+        System.out.println("Minby : " + firstName + "\n");
 
     }
 
